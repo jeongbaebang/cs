@@ -2,9 +2,10 @@ class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
-class SingleLinkedList {
+class CircularLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -32,7 +33,11 @@ class SingleLinkedList {
     } else {
       // 다른 포인터가 존재할때
       this.tail.next = newNode;
+      newNode.prev = this.tail;
       this.tail = newNode;
+
+      // Tail이 Head로 연결
+      this.tail.next = this.head;
     }
   }
 
@@ -58,6 +63,7 @@ class SingleLinkedList {
   }
 
   display() {
+    const originalValue = this.head;
     let currNode = this.head;
     let displayString = '[';
 
@@ -66,6 +72,8 @@ class SingleLinkedList {
       displayString += `${currNode.value}, `;
       // 다음 포인터 이동
       currNode = currNode.next;
+
+      if (currNode === originalValue) break;
     }
 
     displayString = displayString.substr(0, displayString.length - 2);
@@ -73,15 +81,28 @@ class SingleLinkedList {
 
     console.log(displayString);
   }
+
+  size() {
+    let currentNode = this.head;
+    let count = 0;
+
+    while (currentNode !== null) {
+      count += 1;
+
+      currentNode = currentNode.next;
+    }
+
+    return count;
+  }
 }
 
-const linkedList = new SingleLinkedList();
+const linkedList = new CircularLinkedList();
 
 linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
-linkedList.append(4);
-linkedList.append(5);
 
+console.log(linkedList);
 linkedList.display();
-console.log(linkedList.find(1))
+
+// console.log(linkedList.find(1));
