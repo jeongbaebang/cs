@@ -66,3 +66,27 @@ arr.splice(3, 1); // 삭제 O(n)
 
 삽입 및 삭제 O(1)
 탐색 O(n)
+
+#### 큐
+
+큐는 First In First Out (FIFO) 개념을 가진 자료구조.
+
+가장 먼저 집어넣은 데이터가 먼저 나오는 성질을 가지고 있다.
+
+> 키워드: Front, Rear, DeQueue, EnQueue
+
+- Linear Queue를 LinkedList로 표현할 수 있다. (연결 리스트의 head가 Front)
+
+- 자바스크립트에서 shift 함수를 사용해서 queue를 구현하지 말것.
+  -> shift 메서드는 선형시간이 걸리기 때문
+
+삽입 및 삭제 O(1)
+탐색 O(n)
+
+Circular Queue (환형 큐)
+
+환형 큐는 Front와 Rear가 이어져있는 Queue (고정된 크기의 배열)
+
+- 한정된 공간을 효율적으로 이용할때 사용하는 자료구조.
+
+Circular Queue는 Linked List로 구현했을때 이점이 존재하지 않는다.
